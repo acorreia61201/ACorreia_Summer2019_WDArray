@@ -1,22 +1,9 @@
-The original directory splits the 155 models into eight set directories. Each of the directories labelled 0M to 7M is a set directory containing up to twenty models in 
-the 1M array. There are a total of 155 models across the eight directories, and each set is defined by their initial mass range. For example, 0M consists of every 
-model with mass between 0M_sun and 1M_sun, 1M consists of every model with a mass from 1M_sun to below 2M_sun, and so on. The models are varied in mass and metallicity,
-with mass ranging from 0.25M_sun to 7.75M_sun in intervals of 0.25M_sun and metallicity ranging from 0.14 to 0.26 in intervals of 0.03. In addition to the models 
-themselves, each of these set directories includes an sbatch script that submits each of the models in parallel.
+The original directory splits the 155 models into eight set directories. Each of the directories, labelled 0M to 7M, is a set directory containing up to twenty models in the 1M array. Each set is defined by their initial mass range. For example, 0M consists of every model with mass between 0M_sun and 1M_sun, 1M consists of every model with a mass from 1M_sun to below 2M_sun, and so on. The models are varied in mass and metallicity, with mass ranging from 0.25M_sun to 7.75M_sun in intervals of 0.25M_sun and metallicity ranging from 0.14 to 0.26 in intervals of 0.03. In addition to the models themselves, each of these set directories includes an sbatch script that submits each of the models in parallel.
 
-master_1M is the template with which each of the models in the array is made. The inlists are modified such that the values for mass and metallicity are variables
-that are varied with Python scripts. Additionally, the model has been modified such that the separate parts of each run (start, end_agb, and wd) are saved in
-different LOGS folders to prevent issues with overwriting found in Carnie. 
+master_1M is the template with which each of the models in the array is made. The inlists are modified such that the values for mass and metallicity are variables that are varied with Python scripts. Additionally, the model has been modified such that the separate parts of each run (start, end_agb, and wd) are saved in different LOGS folders to prevent issues with overwriting found in Carnie. 
 
-cat_data.py is a script that is run manually from each set once all of the models have finished. The script concatenates each of the history.data files in the 
-LOGS_start, LOGS_to_end_agb, and LOGS_to_wd directories in every model. In the future, another script will have to be made that deletes the headers from the end_agb 
-and wd files such that the concatenated file does not need to be manually modified to remove these headers.
+cat_data.py is a script that is run manually from each set once all of the models have finished. The script concatenates each of the history.data files in the LOGS_start, LOGS_to_end_agb, and LOGS_to_wd directories in every model. In the future, another script will have to be made that deletes the headers from the end_agb and wd files such that the concatenated file does not need to be manually modified to remove these headers.
 
-create_directories.py is a script run manually from the 1M_array directory that creates each of the models in the array. Each model is made by making a folder with 
-the parameter values as a title, copying the master_1M array into each of these folders, and modifying the parameter variables in each controls directory to match
-the model title. In the future, an extra functionality will be included that automatically sorts these models into set directories.
+create_directories.py is a script run manually from the 1M_array directory that creates each of the models in the array. Each model is made by making a folder with the parameter values as a title, copying the master_1M array into each of these folders, and modifying the parameter variables in each controls directory to match the model title. In the future, an extra functionality will be included that automatically sorts these models into set directories.
 
-Each model is run with a combination of three scripts. The first script, submit_jobs.py, is run manually from the 1M_array directory containing all of the set
-directories. The second script, job.mpi, is copied from the template found in the 1M_array directory and modified in each of the set directories. This script is run
-automatically by submit_jobs.py and runs the third script, execute_jobs.py, from each set directory. The final script then runs the ./rn command in each of the model
-directories on Carnie.  
+Each model is run with a combination of three scripts. The first script, submit_jobs.py, is run manually from the 1M_array directory containing all of the set directories. The second script, job.mpi, is copied from the template found in the 1M_array directory and modified in each of the set directories. This script is run automatically by submit_jobs.py and runs the third script, execute_jobs.py, from each set directory. The final script then runs the ./rn command in each of the model directories on Carnie.  

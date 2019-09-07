@@ -1,9 +1,5 @@
-1M_array is a directory that contains all of the models modified from 1M_pre_ms_to_wd that ran over the summer. Additionally, this directory contains the scripts
-that were used to create each of the model directories within.
+1M_array is a directory that contains all of the models modified from 1M_pre_ms_to_wd that ran over the summer. Additionally, this directory contains the scripts that were used to create each of the model directories within.
 
-7M_prems_to_AGB is a directory that was pulled from the MESA test suite that will be used in place of 1M_pre_ms_to_wd as a master model for the the modified model
-directories in 1M_array. The model will have to be extended to the WD phase before being used as a template, as it ends at the start of AGB in its original form.
+7M_prems_to_AGB is a directory that was pulled from the MESA test suite that will be used in place of 1M_pre_ms_to_wd as a master model for the the modified model directories in 1M_array. The model will have to be extended to the WD phase before being used as a template, as it ends at the start of AGB in its original form.
 
-7M_test is a directory containing models with masses from 2M_sun to 6M_sun in 1M_sun intervals. These models were created in order to see if the burning rates 
-included in 7M_prems_to_AGB are compatible with lower masses. Just like the original 7M_prems_to_agb, each of these models ended at the start of the AGB phase.
-Additionally, this directory contains the sbatch scripts and the slurm output from Carnie to show any issues with running the models thus far.
+7M_test is a directory containing models with masses from 2M_sun to 6M_sun in 1M_sun intervals. These models were created in order to see if the burning rates included in 7M_prems_to_AGB are compatible with lower masses. Just like the original 7M_prems_to_agb, each of these models ended at the start of the AGB phase. Additionally, this directory contains the sbatch scripts and the slurm output from Carnie to show any issues with running the models thus far.
